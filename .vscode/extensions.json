@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",                           // Prettier - Code formatter
+        "ms-vscode.vscode-typescript-tslint-plugin",    // TSLint
+        "angular.ng-template",                          // Angular Language Service
+        "cyrilletuzi.angular-schematics",               // Angular Schematics
+        "nrwl.angular-console",                         // Angular Console
+        "editorconfig.editorconfig",                    // EditorConfig for VS Code
+        "vscode-icons-team.vscode-icons",               // vscode-icons
+        "eg2.vscode-npm-script",                        // npm
+        "johnpapa.Angular2",                            // Angular Snippets (Version 8)
+        "Syler.sass-indented",                          // Sass
+        "stylelint.vscode-stylelint",                   // stylelint
+  ]
+}

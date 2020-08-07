@@ -1,0 +1,55 @@
+<app-search></app-search>
+<div id="panel">
+  <ng-container *ngIf="isPending">
+    <mat-spinner class="m-auto"></mat-spinner>
+  </ng-container>
+  <ng-container *ngIf="movieList && movieList.Error">
+    <h2>{{ movieList.Error }}</h2>
+  </ng-container>
+  <ng-container
+    *ngIf="
+      !isPending && movieList && movieList.Search && movieList.Search.length
+    "
+  >
+    <pagination-controls class="m-3" (pageChange)="pageChange($event)">
+    </pagination-controls>
+    <div
+      class="row d-flex flex-wrap align-content-center justify-content-center"
+    >
+      <div
+        class="col-xl-2 col-lg-3 col-md-4 movie-item"
+        *ngFor="
+          let movie of movieList.Search
+            | paginate
+              : {
+                  itemsPerPage: itemsPerPage,
+                  currentPage: this.searchPayload.page,
+                  totalItems: movieList.totalResults,
+                  maxSize: maxSize
+                }
+        "
+      >
+        <a [routerLink]="movie.imdbID">
+          <mat-card>
+            <img
+              mat-card-image
+              [src]="movie.Poster"
+              onerror="this.onerror=null; this.src='assets/images/poster_not_available.jpg'"
+              [alt]="movie.Title"
+            />
+            <mat-card-content>
+              <p>
+                <b> {{ movie.Title }} </b>
+                <br />
+                <i>
+                  {{ movie.Type }} <br />
+                  {{ movie.Year }}
+                </i>
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </a>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,56 @@
+<div id="header-body-panel">
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="d-flex flex-column align-items-center input-group">
+      <div class="row">
+        <mat-form-field>
+          <mat-icon matSuffix>search</mat-icon>
+          <input type="text" matInput [(ngModel)]="searchPayload.s" name="s" />
+        </mat-form-field>
+        <button mat-raised-button hidden color="primary" type="submit">
+          Search
+        </button>
+      </div>
+      <div class="row">
+        <button
+          mat-button
+          color="secondary"
+          type="button"
+          (click)="toggleAdvancedSearch()"
+        >
+          {{
+            searchPayload.isAdvancedSearch ? 'Basic Search' : 'Advanced Search'
+          }}
+        </button>
+      </div>
+      <div class="row" *ngIf="searchPayload.isAdvancedSearch">
+        <mat-form-field class="pr-3">
+          <mat-select
+            [(ngModel)]="searchPayload.type"
+            name="type"
+            (selectionChange)="onSubmit()"
+          >
+            <mat-option value="">All</mat-option>
+            <mat-option
+              *ngFor="let type of types | keyvalue"
+              [value]="type.value"
+            >
+              {{ type.key }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select
+            [(ngModel)]="searchPayload.y"
+            name="y"
+            (selectionChange)="onSubmit()"
+          >
+            <mat-option value="">All</mat-option>
+            <mat-option *ngFor="let year of years" [value]="year">
+              {{ year }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>

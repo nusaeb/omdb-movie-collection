@@ -1,0 +1,60 @@
+<div class="movie-details" *ngIf="movieDetails">
+  <ng-container *ngIf="isPending">
+    <mat-spinner class="m-auto"></mat-spinner>
+  </ng-container>
+  <ng-container *ngIf="!isPending && movieDetails.Response === 'False'">
+    <h2>{{ movieDetails.Error }}</h2>
+  </ng-container>
+  <ng-container *ngIf="!isPending && movieDetails.Response === 'True'">
+    <div class="container">
+      <br />
+      <div class="d-flex flex-wrap align-content-center justify-content-start">
+        <div class="movie__thumbnails">
+          <img
+            style="max-height: 500px;"
+            [src]="movieDetails.Poster"
+            onerror="this.onerror=null; this.src='assets/images/poster_not_available.jpg'"
+          />
+        </div>
+        <div class="movie__headline align-self-end">
+          <h2>{{ movieDetails.Title }}</h2>
+          <br />
+          <i>Runtime: {{ movieDetails.Runtime }}</i>
+          <br />
+          <b>Released: {{ movieDetails.Year }}</b>
+          <br />
+          <h6>Type: {{ movieDetails.Type.toLocaleUpperCase() }}</h6>
+          <i>Genre: {{ movieDetails.Genre }} </i>
+          <br />
+          <i>IMDb Rating: {{ movieDetails.imdbRating }}</i>
+          <br />
+          <ng-template #t let-fill="fill">
+            <span class="star" [class.full]="fill === 100">
+              <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+            </span>
+          </ng-template>
+
+          <ngb-rating
+            [(rate)]="movieDetails.imdbRating"
+            [starTemplate]="t"
+            [readonly]="true"
+            max="10"
+          ></ngb-rating>
+        </div>
+      </div>
+      <hr />
+      <div>
+        <p>
+          <b>Plot: </b>
+          {{ movieDetails.Plot }}
+        </p>
+      </div>
+      <br />
+      <br />
+      <button mat-raised-button color="primary" (click)="backToSearchResult()">
+        <mat-icon>arrow_back</mat-icon>
+        Search Result
+      </button>
+    </div>
+  </ng-container>
+</div>
