@@ -11,15 +11,17 @@ Please follow the steps below to run the app:
 2. Clone the project repository using the command:
 git clone https://github.com/nusaeb/omdb-movie-collection.git
 
-3. Run the following command to install the required dependencies:
+3. Navigate to the directory omdb-movie-collection
+
+4. Run the following command to install the required dependencies:
    npm install
-4. To start the app, run the command:
+5. To start the app, run the command:
    npm start
 
-   4.1 By default, the app runs on the port 4200 on localhost. If a different port needs to be used, the following command should be used (replace xxxx with the desired port number):
+   5.1 By default, the app runs on the port 4200 on localhost. If a different port needs to be used, the following command should be used (replace xxxx with the desired port number):
    npm start -- --port=xxxx
 
-5. To run the unit tests, use the following command:
+6. To run the unit tests, use the following command:
    npm test
 
 PS! The project needs nodejs and npm to be installed in the machine to run. If you need to install nodejs and npm, please follow the instruction provided in the official nodejs website-
