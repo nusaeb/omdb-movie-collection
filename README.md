@@ -9,6 +9,7 @@ Please follow the steps below to run the app:
 1. Open command-prompt or terminal and navigate to the directory where you wish to download the project;
 
 2. Clone the project repository using the command:
+git clone https://github.com/nusaeb/omdb-movie-collection.git
 
 3. Run the following command to install the required dependencies:
    npm install
