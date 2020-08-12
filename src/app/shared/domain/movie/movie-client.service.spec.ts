@@ -129,7 +129,7 @@ describe('MovieClientService', () => {
         Response: 'True',
       };
 
-      movieClient.getMovieDetails('1').subscribe((response) => {
+      movieClient.getMovieDetails({ imdbID: '1' }).subscribe((response) => {
         expect(response).toEqual(mockMovie);
       });
       const mockUrl = movieClient.baseUrl + '&i=1';

@@ -20,7 +20,7 @@ export class MovieEffects {
     private action$: Actions
   ) {}
 
-  GetMovies$: Observable<Action> = createEffect(() =>
+  getMovies$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
       ofType(GetMoviesAction),
       mergeMap((action) => {
@@ -38,13 +38,11 @@ export class MovieEffects {
     )
   );
 
-  GetMovieDetails$: Observable<Action> = createEffect(() =>
+  getMovieDetails$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
       ofType(GetMovieDetailsAction),
       mergeMap((action) => {
-        return from(
-          this.movieClient.getMovieDetails(action.payload.imdbID)
-        ).pipe(
+        return from(this.movieClient.getMovieDetails(action.payload)).pipe(
           map((res) =>
             !res.Error
               ? GetMovieDetailsSuccessAction({ payload: res })

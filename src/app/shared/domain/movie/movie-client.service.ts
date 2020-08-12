@@ -21,9 +21,9 @@ export class MovieClientService {
     return this.httpClient.get<MovieListResponse>(url);
   }
 
-  getMovieDetails(imdbID: string) {
+  getMovieDetails(payload: { imdbID: string }) {
     return this.httpClient.get<MovieDetailsResponse>(
-      `${this.baseUrl}&i=${imdbID}`
+      `${this.baseUrl}&i=${payload.imdbID}`
     );
   }
 }

@@ -63,7 +63,7 @@ describe('MovieEffects', () => {
         return of(movieListResponse);
       });
       actions$ = of(GetMoviesAction);
-      effects.GetMovies$.subscribe((res) => {
+      effects.getMovies$.subscribe((res) => {
         expect(res).toEqual(
           GetMoviesSuccessAction({ payload: movieListResponse })
         );
@@ -83,7 +83,7 @@ describe('MovieEffects', () => {
         return of(movieListResponse);
       });
       actions$ = of(GetMoviesAction);
-      effects.GetMovies$.subscribe((res) => {
+      effects.getMovies$.subscribe((res) => {
         expect(res).toEqual(
           GetMoviesFailureAction({ payload: movieListResponse })
         );
@@ -111,7 +111,7 @@ describe('MovieEffects', () => {
         return of(movieDetailsResponse);
       });
       actions$ = of(GetMovieDetailsAction({ payload: { imdbID: '1' } }));
-      effects.GetMovieDetails$.subscribe((res) => {
+      effects.getMovieDetails$.subscribe((res) => {
         expect(res).toEqual(
           GetMovieDetailsSuccessAction({ payload: movieDetailsResponse })
         );
@@ -138,7 +138,7 @@ describe('MovieEffects', () => {
         return of(movieDetailsResponse);
       });
       actions$ = of(GetMovieDetailsAction({ payload: { imdbID: '111' } }));
-      effects.GetMovieDetails$.subscribe((res) => {
+      effects.getMovieDetails$.subscribe((res) => {
         expect(res).toEqual(
           GetMovieDetailsFailureAction({ payload: movieDetailsResponse })
         );
